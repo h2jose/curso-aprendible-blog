@@ -23,16 +23,18 @@
                     return request()->is($url) ? 'active' : '';
                 }
             @endphp
-            <h1>{{ request()->is('/') ? 'Estas en el home' : 'No estás en el home' }}</h1>
+            {{-- <h1>{{ request()->is('/') ? 'Estas en el home' : 'No estás en el home' }}</h1> --}}
             <nav>
                 <a class="{{ activeMenu('/') }}" href="{{ route('home') }}">Inicio</a>
                 <a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos', 'Sanders') }}">Saludos</a>
                 <a class="{{ activeMenu('contactame') }}" href="{{ route('contactos') }}">Contactos</a>
             </nav>
         </header>
+        <hr>
 
         @yield('contenido')
 
+        <hr>
         <footer>Copyright &copy; {{ date('Y') }}</footer>
     </body>
 </html>

@@ -7,6 +7,11 @@ use App\Http\Requests\CreateMessageRequest;
 
 class PagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('example', ['except' => ['home']]);
+    }
+
     public function home()
     {
         // return ['key' => ['value1', 'value2']];
