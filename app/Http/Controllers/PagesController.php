@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Request\CreateMessageRequest;
 
 class PagesController extends Controller
 {
@@ -30,14 +31,8 @@ class PagesController extends Controller
         return view('saludo', compact('nombre', 'html', 'script', 'consolas'));
     }
 
-    public function mensajes(Request $request)
+    public function mensajes(CreateMessageRequest $request)
     {
-        $this->validate($request, [
-            'nombre' => 'required|min:3',
-            'email' => 'required|email',
-            'mensaje' => 'required|min:5|max:140'
-        ]);
-
         return $request->all();
     }
 }
