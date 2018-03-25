@@ -32,11 +32,12 @@ class PagesController extends Controller
 
     public function mensajes(Request $request)
     {
-        // dd($request->has('nombre'));
-        if ($request->filled('nombre')) {
-            return "Tiene nombre";
-        }
+        $this->validate($request, [
+            'nombre' => 'required|min:3',
+            'email' => 'required|email',
+            'mensaje' => 'required|min:5|max:140'
+        ]);
 
-        return "No tiene nombre";
+        return $request->all();
     }
 }
