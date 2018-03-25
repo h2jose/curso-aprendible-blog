@@ -37,8 +37,6 @@ class PagesController extends Controller
     {
         $data = $request->all();
 
-        return redirect()
-            ->route('contactos')
-            ->with('info', 'Tu mensaje ha sido enviado');
+        return back()->with('info', 'Tu mensaje ha sido enviado');
     }
 }
