@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="es" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Saludos</title>
-    </head>
-    <body>
-        <h1>Saludos: <?php echo $nombre ?></h1>
-    </body>
-</html>
+@extends('layouts.layout')
+
+@section('contenido')
+    <h1>Saludos: {{ $nombre }}</h1>
+    {!! $html !!}
+    {{-- {!! $script !!} --}}
+
+    @forelse ($consolas as $consola)
+        <li>{{ $consola }}</li>
+    @empty
+        <p>No hay consolas :(</p>
+    @endforelse
+
+    @if (count($consolas) === 1)
+        <p>Solo tienes una consola</p>
+    @elseif (count($consolas) > 1)
+        <p>Tienes varias consolas</p>
+    @else
+        <p>No tienes ninguna consola. :(</p>
+    @endif
+@endsection

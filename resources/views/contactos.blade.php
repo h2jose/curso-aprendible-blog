@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="es" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Contactos</title>
-    </head>
-    <body>
-        <h1>Sección de Contactos</h1>
-    </body>
-</html>
+@extends('layouts.layout')
+
+@section('contenido')
+    <h1>Sección de Contactos</h1>
+@endsection

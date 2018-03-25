@@ -18,7 +18,17 @@ Route::get('/', function () {
 Route::get('saludos/{nombre?}', function ($nombre = 'Invitado') {
     // return view('saludos', ['nombre' => $nombre]);
     // return view('saludos')->with(['nombre' => $nombre]);
-    return view('saludo', compact('nombre'));
+
+    $html = "<h2>Contenido HTML</h2>";
+    $script = "<script>alert('Hola Mundo')</script>";
+
+    $consolas = [
+        // 'Play Station 4',
+        // 'Xbox One',
+        // 'Wii U'
+    ];
+
+    return view('saludo', compact('nombre', 'html', 'script', 'consolas'));
 })->where('nombre', "[a-zA-Z]+")->name('saludos');
 
 // Route::get('contactenos', ['as' => 'contacto', function () {
