@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Request\CreateMessageRequest;
+use App\Http\Requests\CreateMessageRequest;
 
 class PagesController extends Controller
 {
     public function home()
     {
+        // return ['key' => ['value1', 'value2']];
+        // return response('Contenido de la respuesta', 200)->header('X-TOKEN', bcrypt('secret'));
         return view('home');
     }
 
@@ -33,6 +35,8 @@ class PagesController extends Controller
 
     public function mensajes(CreateMessageRequest $request)
     {
-        return $request->all();
+        $data = $request->all();
+        return response()->json(['data' => $data], 202)
+            ->header('TOKEN', bcrypt('secret'));
     }
 }
