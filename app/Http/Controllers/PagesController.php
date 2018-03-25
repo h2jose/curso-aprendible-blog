@@ -36,7 +36,9 @@ class PagesController extends Controller
     public function mensajes(CreateMessageRequest $request)
     {
         $data = $request->all();
-        return response()->json(['data' => $data], 202)
-            ->header('TOKEN', bcrypt('secret'));
+
+        return redirect()
+            ->route('contactos')
+            ->with('info', 'Tu mensaje ha sido enviado');
     }
 }
