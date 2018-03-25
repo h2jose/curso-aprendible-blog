@@ -29,4 +29,14 @@ class PagesController extends Controller
 
         return view('saludo', compact('nombre', 'html', 'script', 'consolas'));
     }
+
+    public function mensajes(Request $request)
+    {
+        // dd($request->has('nombre'));
+        if ($request->filled('nombre')) {
+            return "Tiene nombre";
+        }
+
+        return "No tiene nombre";
+    }
 }

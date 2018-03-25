@@ -3,16 +3,31 @@
     <head>
         <meta charset="utf-8">
         <title>Blog</title>
+        <style media="screen">
+            .active {
+                text-decoration: none;
+                color: green;
+            }
+        </style>
     </head>
     <body>
         <header>
+            @php
+                function activeMenu($url)
+                {
+                    return request()->is($url) ? 'active' : '';
+                }
+            @endphp
+            <h1>{{ request()->is('/') ? 'Estas en el home' : 'No estás en el home' }}</h1>
             <nav>
-                <a href="<?php echo route('home'); ?>">Inicio</a>
-                <a href="<?php echo route('saludos', 'Sanders'); ?>">Saludos</a>
-                <a href="<?php echo route('contactos'); ?>">Contactos</a>
+                <a class="{{ activeMenu('/') }}" href="{{ route('home') }}">Inicio</a>
+                <a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos', 'Sanders') }}">Saludos</a>
+                <a class="{{ activeMenu('contactame') }}" href="{{ route('contactos') }}">Contactos</a>
             </nav>
         </header>
+
         @yield('contenido')
+
         <footer>Copyright &copy; {{ date('Y') }}</footer>
     </body>
 </html>
