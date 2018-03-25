@@ -12,5 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "<a href=". route('contacto') .">Contacto</a>";
+    echo "<a href=". route('contacto') .">Contacto</a>";
+    echo "<a href=". route('contacto') .">Contacto</a>";
+    echo "<a href=". route('contacto') .">Contacto</a>";
 });
+
+// Route::get('contactenos', ['as' => 'contacto', function () {
+//     return '<h2>Sección de Contactos</h2>';
+// }]);
+
+Route::get('contactame', function () {
+    return '<h2>Sección de Contactos</h2>';
+})->name('contacto');
+
+Route::get('saludos/{nombre?}', function ($nombre = 'Invitado') {
+    return "Saludos $nombre";
+})->where('nombre', "[a-zA-Z]+");
