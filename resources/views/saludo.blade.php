@@ -4,13 +4,14 @@
     <h1>Saludos: {{ $nombre }}</h1>
     {!! $html !!}
     {{-- {!! $script !!} --}}
-
-    @forelse ($consolas as $consola)
-        <li>{{ $consola }}</li>
-    @empty
-        <p>No hay consolas :(</p>
-    @endforelse
-
+    <ul>
+        @forelse ($consolas as $consola)
+            <li>{{ $consola }}</li>
+        @empty
+            <p>No hay consolas :(</p>
+        @endforelse
+    </ul>
+    
     @if (count($consolas) === 1)
         <p>Solo tienes una consola</p>
     @elseif (count($consolas) > 1)
