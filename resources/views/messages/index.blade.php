@@ -27,19 +27,19 @@
                         <td>{{ $message->email }}</td>
                         <td>{{ $message->phone }}</td>
                         <td>
-                            <a class="btn btn-info" href="{{ route('messages.show', ['id' => $message->id]) }}">Ver</a>
-                            <a class="btn btn-warning" href="{{ route('messages.edit', ['id' => $message->id]) }}">Editar</a>
+                            <a class="btn btn-primary" href="{{ route('messages.show', ['id' => $message->id]) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a class="btn btn-secondary" href="{{ route('messages.edit', ['id' => $message->id]) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             <form class="form" action="{{ route('messages.destroy', ['id' => $message->id]) }}" method="post">
                                 {{ csrf_field() }}
                                 {!! method_field('DELETE') !!}
 
-                                <button class="btn btn-primary" type="submit">Eliminar</button>
+                                <button class="btn btn-danger" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <p><a class="btn btn-primary" href="{{ route('messages.create') }}">Nuevo mensaje</a></p>
+        <p><a class="btn btn-success" href="{{ route('messages.create') }}">Nuevo mensaje</a></p>
     </div>
 @endsection

@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-12 text-right">
-                    <a class="btn" href="{{ route('messages.index') }}">Volver</a>
+                    <a class="btn btn-light" href="{{ route('messages.index') }}">Volver</a>
                     <input class="btn btn-primary" type="submit" value="Enviar">
                 </div>
             </div>
