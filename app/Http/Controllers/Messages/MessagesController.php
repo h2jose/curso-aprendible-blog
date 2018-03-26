@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Messages;
 
 use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Message;
 use App\Http\Requests\CreateMessageRequest;
@@ -12,6 +13,10 @@ use App\Http\Requests\EditMessageRequest;
 
 class MessagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['create', 'store']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -68,7 +73,7 @@ class MessagesController extends Controller
         Message::create($request->all());
 
         // Redireccionar
-        return redirect()->route('messages.index');
+        return redirect()->route('messages.create')->with('info', 'Hemos recibido tu mensaje');
     }
 
     /**
