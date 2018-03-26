@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('contenido')
-    <h1>Sección de Mensajes</h1>
+    <h1>Mensajes</h1>
     <hr>
 
     <table>

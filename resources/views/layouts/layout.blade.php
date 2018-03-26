@@ -13,6 +13,19 @@
                 color: red;
                 font-size: 12px;
             }
+
+            table {
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            table tr+tr {
+                background-color: #f4f4f4;
+            }
+
+            table tbody tr td > * {
+                display: inline-block;
+            }
         </style>
     </head>
     <body>
@@ -23,12 +36,9 @@
                     return request()->is($url) ? 'active' : '';
                 }
             @endphp
-            {{-- <h1>{{ request()->is('/') ? 'Estas en el home' : 'No estás en el home' }}</h1> --}}
             <nav>
-                <a class="{{ activeMenu('/') }}" href="{{ route('home') }}">Inicio</a>
-                <a class="{{ activeMenu('saludos/*') }}" href="{{ route('saludos', 'Sanders') }}">Saludos</a>
+                <a class="{{ activeMenu('/') }}" href="{{ route('home') }}">Inicio</a> |
                 <a class="{{ activeMenu('messages') }}" href="{{ route('messages.index') }}">Mensajes</a>
-                <a class="{{ activeMenu('messages/create') }}" href="{{ route('messages.create') }}">Contactos</a>
             </nav>
         </header>
         <hr>

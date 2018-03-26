@@ -27,7 +27,7 @@
                 <textarea name="mensaje" placeholder="quem quae dolore multos esse tamen noster labore esse quem">{{ old('mensaje') }}</textarea>
                 {!! $errors->first('mensaje', '<span class="error">:message</span>') !!}
             </p>
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Enviar"> | 
             <a href="{{ route('messages.index') }}">Volver</a>
         </form>
     @endif
