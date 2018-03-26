@@ -50,7 +50,7 @@ class MessagesController extends Controller
         ]);
 
         // Redireccionar
-        return redirect()->route('messages');
+        return redirect()->route('messages.index');
     }
 
     /**
