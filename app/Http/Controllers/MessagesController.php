@@ -6,6 +6,8 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Models\Message;
+use App\Http\Requests\CreateMessageRequest;
 
 class MessagesController extends Controller
 {
@@ -16,7 +18,11 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $messages = DB::table('messages')->get();
+        // Query Builder
+        // $messages = DB::table('messages')->get();
+
+        // Eloquent
+        $messages = Message::all();
 
         return view('messages.index', compact('messages'));
     }
@@ -37,17 +43,28 @@ class MessagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMessageRequest $request)
     {
-        // Guardar
-        DB::table('messages')->insert([
-            'nombre' => $request->input('nombre'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'mensaje' => $request->input('mensaje'),
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now()
-        ]);
+        // Guardar con Query Builder
+        // DB::table('messages')->insert([
+        //     'nombre' => $request->input('nombre'),
+        //     'email' => $request->input('email'),
+        //     'phone' => $request->input('phone'),
+        //     'mensaje' => $request->input('mensaje'),
+        //     'created_at' => Carbon::now(),
+        //     'updated_at' => Carbon::now()
+        // ]);
+
+        // Guardar con Eloquent - Forma #1
+        // $message = new Message();
+        // $message->nombre = $request->input('nombre');
+        // $message->email = $request->input('email');
+        // $message->phone = $request->input('phone');
+        // $message->mensaje = $request->input('mensaje');
+        // $message->save();
+
+        // Guardar con Eloquent - Forma #2
+        Message::create($request->all());
 
         // Redireccionar
         return redirect()->route('messages.index');

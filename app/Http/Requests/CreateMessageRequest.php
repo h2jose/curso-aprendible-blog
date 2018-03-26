@@ -25,7 +25,8 @@ class CreateMessageRequest extends FormRequest
     {
         return [
             'nombre' => 'required|min:3',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:messages,email',
+            // 'phone' => 'numeric|min:8|max:15',
             'mensaje' => 'required|min:5|max:140'
         ];
     }
